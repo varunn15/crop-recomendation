@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div style="background:black;padding:10px;">
+    <a href="/" style="color:white;margin:10px;">Home</a>
+    <a href="/predict" style="color:white;margin:10px;">Prediction</a>
+    <a href="/dashboard" style="color:white;margin:10px;">Database</a>
+    <a href="/analytics" style="color:white;margin:10px;">Analytics</a>
+    <a href="/about" style="color:white;margin:10px;">About</a>
+</div>
+
+<h1>📈 Project Analytics</h1>
+
+<p>Total Records: {{ records }}</p>
+<p>Total Features: {{ features }}</p>
+
+<h2>🌾 Crop Distribution</h2>
+<canvas id="cropChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const labels = JSON.parse('{{ labels | tojson }}');
+    const values = JSON.parse('{{ values | tojson }}');
+
+    const ctx = document.getElementById('cropChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Number of Records',
+                data: values
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction</title>
+</head>
+<body>
+
+<div style="background:black;padding:10px;">
+    <a href="/" style="color:white;margin:10px;">Home</a>
+    <a href="/predict" style="color:white;margin:10px;">Prediction</a>
+    <a href="/dashboard" style="color:white;margin:10px;">Database</a>
+    <a href="/analytics" style="color:white;margin:10px;">Analytics</a>
+    <a href="/about" style="color:white;margin:10px;">About</a>
+</div>
+
+<h1>🌾 Crop Prediction</h1>
+
+<form method="POST">
+    Nitrogen: <input type="number" name="nitrogen" required><br><br>
+    Phosphorus: <input type="number" name="phosphorus" required><br><br>
+    Potassium: <input type="number" name="potassium" required><br><br>
+    Moisture: <input type="number" name="moisture" required><br><br>
+    Temperature: <input type="number" name="temperature" required><br><br>
+    Humidity: <input type="number" name="humidity" required><br><br>
+    Rainfall: <input type="number" name="rainfall" required><br><br>
+
+    <button type="submit">Predict</button>
+</form>
+
+<h2>
+{% if prediction %}
+    ✅ Recommended Crop: {{ prediction }} <br>
+    📊 Confidence: {{ confidence }}%
+{% endif %}
+</h2>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            display: flex;
+            background: #ecf0f1;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background: #34495e;
+        }
+
+        /* Main content */
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        /* Tables */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #2c3e50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        tr:hover {
+            background: #dfe6e9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>🌾 Crop System</h2>
+        <a href="/">Prediction</a>
+        <a href="/dashboard">Database</a>
+        <a href="/analytics">Analytics</a>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <h1>📂 Database Tables</h1>
+
+        <!-- SOIL DATA -->
+        <h2>🌱 Soil Data</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nitrogen</th>
+                <th>Phosphorus</th>
+                <th>Potassium</th>
+                <th>Moisture</th>
+            </tr>
+
+            {% for row in soil %}
+            <tr>
+                <td>{{ row.soil_id }}</td>
+                <td>{{ row.nitrogen }}</td>
+                <td>{{ row.phosphorus }}</td>
+                <td>{{ row.potassium }}</td>
+                <td>{{ row.moisture }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- WEATHER DATA -->
+        <h2>🌦 Weather Data</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Rainfall</th>
+            </tr>
+
+            {% for row in weather %}
+            <tr>
+                <td>{{ row.weather_id }}</td>
+                <td>{{ row.temperature }}</td>
+                <td>{{ row.humidity }}</td>
+                <td>{{ row.rainfall }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- CROP TABLE -->
+        <h2>🌾 Crop Table</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Crop Name</th>
+            </tr>
+
+            {% for row in crop %}
+            <tr>
+                <td>{{ row.crop_id }}</td>
+                <td>{{ row.crop_name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</body>
+</html>
